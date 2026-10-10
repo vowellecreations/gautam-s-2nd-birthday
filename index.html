@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#08080a">
+  <title>Gautam Turns 2 | Vowelle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="ambient a1" aria-hidden="true"></div>
+  <div class="ambient a2" aria-hidden="true"></div>
+
+
+
+  <!-- Subtle Scroll Star Trail -->
+  <div class="scroll-star-tracker" id="scrollStarTracker" aria-hidden="true">
+    <span class="tracker-star">✦</span>
+  </div>
+
+  <!-- Interactive Cursor / Tap Sparkle Canvas -->
+  <canvas id="sparkleCanvas" class="sparkle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Storybook Page Index Indicator -->
+  <div class="story-indicator" id="storyIndicator" aria-hidden="true">
+    <span id="currentSectionIdx">01</span> / <span>07</span>
+  </div>
+
+  <!-- ==========================================================
+       CINEMATIC PHYSICAL ENVELOPE OPENING EXPERIENCE
+       "The Guest Receives & Physically Opens Gautam's Invitation"
+       ========================================================== -->
+  <div class="intro" id="intro" role="region" aria-label="Gautam's Birthday Invitation Opening">
+    <!-- Atmospheric Spotlight Glow & Background Dust Particles -->
+    <div class="envelope-ambient-glow" id="envelopeAmbientGlow" aria-hidden="true"></div>
+    <canvas id="introParticleCanvas" class="intro-particle-canvas" aria-hidden="true"></canvas>
+
+    <!-- Foreground Floating Minimalist Stars -->
+    <div class="envelope-stars-field" aria-hidden="true">
+      <span class="env-star env-s1">✦</span>
+      <span class="env-star env-s2">✧</span>
+      <span class="env-star env-s3">·</span>
+      <span class="env-star env-s4">✦</span>
+    </div>
+
+    <!-- The Central Stationery Composition -->
+    <div class="envelope-stage" id="envelopeStage">
+      <!-- 3D Physical Invitation Envelope Container -->
+      <div class="luxury-envelope" id="luxuryEnvelope" role="button" tabindex="0" aria-label="Open Gautam's Luxury Birthday Invitation">
+        <div class="envelope-shadow" aria-hidden="true"></div>
+
+        <!-- The Physical Envelope Body with 3D Layers -->
+        <div class="envelope-wrapper">
+          <!-- Back Wall of Envelope & Inner Pocket Cavity -->
+          <div class="envelope-back">
+            <div class="envelope-inner-lining"></div>
+          </div>
+
+          <!-- The Physical Ivory Invitation Card Inside the Envelope -->
+          <div class="invitation-card" id="invitationCard">
+            <div class="card-paper-texture"></div>
+            <div class="card-gold-border"></div>
+            <div class="card-inner-content">
+              <span class="card-emblem">✦</span>
+              <p class="card-eyebrow">YOU ARE CORDIALLY INVITED</p>
+              <h2 class="card-name">GAUTAM</h2>
+              <p class="card-milestone">TURNS TWO</p>
+              <div class="card-divider-line"></div>
+              <p class="card-date-cue">OCTOBER 24, 2026 • JUHU, MUMBAI</p>
+            </div>
+            <!-- Dynamic light reflection on the card during rise -->
+            <div class="card-shimmer-sweep" aria-hidden="true"></div>
+          </div>
+
+          <!-- Front Pocket Shell (Left, Right, Bottom geometric folds) -->
+          <div class="envelope-pocket-front">
+            <div class="pocket-fold-left"></div>
+            <div class="pocket-fold-right"></div>
+            <div class="pocket-fold-bottom"></div>
+
+            <!-- Subtle Debossed Vowelle Stationery Branding on Front -->
+            <div class="envelope-brand-deboss">
+              <span class="brand-name">VOWELLE</span>
+              <span class="brand-tag">DIGITAL INVITATIONS &amp; EXPERIENCES</span>
+            </div>
+          </div>
+
+          <!-- Top Foldable Envelope Flap with 3D Fold Hinge -->
+          <div class="envelope-flap" id="envelopeFlap">
+            <div class="flap-outer">
+              <div class="flap-gold-trim"></div>
+            </div>
+            <div class="flap-inner"></div>
+
+            <!-- Minimal Champagne-Gold Embossed Wax/Foil Seal -->
+            <div class="envelope-seal" id="envelopeSeal" role="button" tabindex="0" aria-label="Tap to open Gautam's luxury invitation">
+              <div class="seal-ring"></div>
+              <div class="seal-core">
+                <span class="seal-glyph">2</span>
+              </div>
+              <div class="seal-specular"></div>
+              <span class="seal-tap-cue">TAP TO OPEN</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Warm Golden Radiance behind Card as it expands -->
+        <div class="card-radiant-glow" id="cardRadiantGlow" aria-hidden="true"></div>
+      </div>
+
+      <!-- Refined Luxury Interaction Prompt -->
+      <div class="envelope-prompt-wrap" id="envelopePromptWrap">
+        <button class="envelope-open-cta" id="openEnvelopeBtn" aria-label="Open Gautam's Birthday Invitation">
+          <span class="prompt-text">OPEN THE INVITATION</span>
+          <span class="prompt-line" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen Expansion Veil: Physical Paper Texture Seamlessly Becomes Digital Hero Background -->
+    <div class="card-fullscreen-veil" id="cardFullscreenVeil" aria-hidden="true"></div>
+  </div>
+
+  <!-- Minimal Music Control -->
+  <button class="music-toggle" id="musicToggle" aria-label="Play music">
+    <span class="music-note">♪</span>
+    <span class="music-bars" id="musicBars"><i></i><i></i><i></i></span>
+    <span class="music-status" id="musicStatus">||</span>
+  </button>
+
+  <main id="mainContent">
+    <section class="section hero" id="home" data-section-index="01">
+      <!-- Background Continuity Layers: Warm Champagne Spotlight & Soft Ribbon Lines -->
+      <div class="hero-atmosphere-glow" aria-hidden="true"></div>
+      <div class="hero-ribbon-curves" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" fill="none" preserveAspectRatio="none">
+          <path d="M-100,250 C400,100 800,450 1540,200" stroke="rgba(217, 190, 123, 0.09)" stroke-width="1.2" stroke-dasharray="8 6"/>
+          <path d="M-50,650 C500,400 950,800 1500,550" stroke="rgba(197, 160, 90, 0.07)" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="hero-content reveal" id="heroContent">
+        <!-- Step 7: Sequential Typography Entrance -->
+        <div class="hero-editorial-header">
+          <span class="hero-brand-line" id="heroBrandLine">VOWELLE</span>
+          <span class="hero-story-tag" id="heroStoryTag">A LITTLE STORY</span>
+        </div>
+
+        <!-- Step 8: GAUTAM Hero Reveal with Soft Horizontal Light Sweep -->
+        <div class="hero-name-stage" id="heroNameStage">
+          <div class="hero-light-sweep-bar" id="heroLightSweepBar" aria-hidden="true"></div>
+          <p class="hero-pre-title">CELEBRATING</p>
+          <h1 class="shimmer-title hero-headline" id="heroName">Gautam</h1>
+          <p class="hero-turns-subtitle" id="heroTurnsSubtitle">TURNS TWO</p>
+        </div>
+
+        <!-- Step 9: Hero Editorial Photograph Showcase with Soft Clip-Path Reveal -->
+        <div class="hero-photo-showcase" id="heroPhotoShowcase">
+          <div class="hero-editorial-frame">
+            <div class="hero-photo-clip">
+              <img 
+                src="assets/birthdayboy1.jpg" 
+                alt="Gautam - Celebrating 2nd Birthday" 
+                class="hero-photo-img"
+                id="heroPhotoImg"
+                loading="eager"
+                decoding="async"
+              />
+              <div class="hero-photo-warm-tint" aria-hidden="true"></div>
+            </div>
+            <div class="hero-photo-gold-outline" aria-hidden="true"></div>
+            <div class="hero-photo-caption">
+              <span class="photo-badge-star">✦</span>
+              <span class="photo-badge-text">GAUTAM • TWO YEARS OF WONDER</span>
+              <span class="photo-badge-star">✦</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Birthday Cake Moment -->
+        <div class="cake-wish-stage" id="cakeWishStage">
+          <p class="cake-wish-cue" id="cakeWishCue">MAKE A WISH FOR GAUTAM</p>
+          <div class="birthday-cake" id="birthdayCake" role="button" tabindex="0" aria-label="Make a wish for Gautam">
+            <div class="cake-glow" id="cakeGlow"></div>
+            <div class="cake-body">
+              <div class="cake-tier tier-bottom"></div>
+              <div class="cake-tier tier-middle"></div>
+              <div class="cake-tier tier-top"></div>
+              <div class="cake-frosting-drip"></div>
+            </div>
+            <div class="cake-candle-single">
+              <div class="candle-body"></div>
+              <div class="candle-flame" id="cakeFlame"></div>
+              <div class="flame-glow"></div>
+            </div>
+            <div class="cake-particles" id="cakeParticles"></div>
+          </div>
+          <p class="wish-reveal" id="wishReveal">TWO YEARS.<br><em>SO MANY LITTLE MOMENTS.</em></p>
+        </div>
+
+        <!-- Signature "2" Hero Display -->
+        <div class="hero-age-stage" id="heroAgeStage">
+          <div class="age-stars-wrap">
+            <span class="age-star star-1">✦</span>
+            <div class="age-halo">
+              <div class="age" id="heroAge">2</div>
+              <div class="age-orbit-ring" aria-hidden="true"></div>
+            </div>
+            <span class="age-star star-2">✦</span>
+          </div>
+          <p class="age-quote">TWO YEARS OF MAGIC</p>
+        </div>
+
+        <div class="gold-line"></div>
+        <p class="hero-copy">An evening of laughter,<br>music & beautiful memories.</p>
+        <a class="scroll-cue" href="#reveal">SCROLL TO DISCOVER <span>↓</span></a>
+      </div>
+    </section>
+
+    <section class="section reveal-section" id="reveal" data-section-index="02">
+      <!-- 4 Curated Floating Storybook Balloons for Guess What Section -->
+      <div class="balloons-layer" id="revealBalloons" aria-hidden="true">
+        <div class="balloon b1">
+          <div class="balloon-body"></div>
+          <div class="balloon-string"></div>
+        </div>
+        <div class="balloon b2">
+          <div class="balloon-body"></div>
+          <div class="balloon-string"></div>
+        </div>
+        <div class="balloon b3">
+          <div class="balloon-body"></div>
+          <div class="balloon-string"></div>
+        </div>
+        <div class="balloon b4">
+          <div class="balloon-body"></div>
+          <div class="balloon-string"></div>
+        </div>
+        <!-- Independent Champagne-Gold Drift Particles -->
+        <div class="balloon-particles-layer" id="balloonParticles"></div>
+      </div>
+
+      <div class="container narrow reveal">
+        <p class="eyebrow">GUESS WHAT?</p>
+        <h2>Someone's getting<br><em>one year wiser.</em></h2>
+        <div class="big-number">2</div>
+        <p class="section-copy">And there is only one way to celebrate it — surrounded by the people who make life
+          special.</p>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         PRIMARY CHILD PORTRAIT — GAUTAM (OUR LITTLE STAR)
+         Editorial Asymmetrical Magazine Layout
+         ========================================================== -->
+    <section class="section photo-story-section portrait-story" id="photoStory1">
+      <div class="container photo-story-container">
+        <div class="editorial-story-layout layout-portrait">
+          <!-- Text Story Column -->
+          <div class="photo-story-text reveal">
+            <div class="editorial-top-mark" aria-hidden="true">✦</div>
+            <p class="eyebrow photo-eyebrow">A SPECIAL CHAPTER</p>
+            <h2 class="photo-heading">Little steps,<br><em>endless wonders.</em></h2>
+            <div class="photo-hairline-rule" aria-hidden="true"></div>
+            <p class="photo-story-copy">
+              Two years of curious eyes, heartwarming smiles, and every tiny step that turned into our greatest adventure.
+            </p>
+          </div>
+
+          <!-- Editorial Photograph Column -->
+          <div class="photo-editorial-col">
+            <div class="premium-photo-frame variant-portrait" data-photo-variant="portrait">
+              <div class="photo-clip-stage">
+                <div class="photo-inner-canvas">
+                  <img 
+                    src="assets/birthdayboy1.jpg" 
+                    alt="Gautam - Our Little Star" 
+                    class="editorial-img img-portrait"
+                    loading="lazy" 
+                    decoding="async" 
+                  />
+                  <!-- Ultra-subtle champagne-gold tint overlay to harmonize palette -->
+                  <div class="photo-warm-sheen" aria-hidden="true"></div>
+                </div>
+              </div>
+              <!-- Editorial Micro Caption Bar -->
+              <div class="photo-caption-bar">
+                <span class="caption-star">✦</span>
+                <span class="photo-caption-text">OUR LITTLE STAR</span>
+                <span class="caption-star">✦</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="section ivory" id="details" data-section-index="03">
+       <div class="container reveal">
+         <p class="eyebrow dark">SAVE THIS DAY</p>
+         <div class="date-gold-rule"></div>
+         <h2 class="dark-title">LET'S CELEBRATE</h2>
+         <div class="date-card">
+           <small>SATURDAY</small><strong class="date-number">24</strong><small>OCTOBER 2026</small>
+           <hr><b class="date-time">7:00 PM ONWARDS</b>
+           <div class="add-to-calendar">
+             <button class="calendar-btn" id="addToCalendarBtn">
+               <div class="calendar-icon">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <rect x="3" y="5" width="18" height="16" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                   <line x1="3" y1="3" x2="21" y2="3" stroke-linecap="round" stroke-linejoin="round"/>
+                   <line x1="8" y1="21" x2="16" y2="21" stroke-linecap="round" stroke-linejoin="round"/>
+                 </svg>
+               </div>
+               <span class="calendar-text">
+                 ADD TO CALENDAR
+                 <span class="calendar-badge">WEB</span>
+               </span>
+             </button>
+           </div>
+         </div>
+       </div>
+     </section>
+
+    <section class="section venue" data-section-index="04">
+      <div class="container reveal">
+        <p class="eyebrow venue-eyebrow">WHERE THE MAGIC HAPPENS</p>
+        <div class="venue-divider"></div>
+        <div class="venue-card">
+          <div class="venue-pin-stage">
+            <div class="venue-icon">⌖</div>
+            <div class="venue-ripple"></div>
+          </div>
+          <h2 class="venue-name">The Garden House</h2>
+          <div class="venue-address">
+            <p class="addr-line line-1">Juhu Tara Road, Juhu</p>
+            <p class="addr-line line-2">Mumbai, Maharashtra 400049</p>
+            <p class="addr-line line-3">India</p>
+          </div>
+          <a class="outline-btn venue-btn" target="_blank" rel="noopener noreferrer"
+            href="https://www.google.com/maps/search/?api=1&query=The+Garden+House%2C+Juhu+Tara+Road%2C+Juhu%2C+Mumbai%2C+Maharashtra+400049%2C+India">VIEW
+            LOCATION ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+     FAMILY LETTER SECTION (A Little Note From Our Hearts)
+     Luxury Editorial Stationery Letter from Gautam's Family
+     ========================================================== -->
+    <section class="section letter-section" id="familyLetter" data-section-index="05">
+      <!-- Warm radial ambient glow & delicate golden floating dust particles -->
+      <div class="letter-bg-glow" aria-hidden="true"></div>
+      <div class="letter-dust-field" id="letterDustField" aria-hidden="true"></div>
+
+      <!-- Subtle background ambient floating stars -->
+      <div class="letter-bg-star bg-star-tl" aria-hidden="true">✦</div>
+      <div class="letter-bg-star bg-star-tr" aria-hidden="true">✧</div>
+      <div class="letter-bg-star bg-star-bl" aria-hidden="true">✧</div>
+      <div class="letter-bg-star bg-star-br" aria-hidden="true">✦</div>
+
+      <div class="container letter-container reveal">
+        <!-- Family Photograph Emotional Companion (parentsandboy.jpg) -->
+        <div class="family-photo-companion" id="familyPhotoWrap">
+          <div class="premium-photo-frame variant-family" data-photo-variant="family">
+            <div class="photo-clip-stage">
+              <div class="photo-inner-canvas">
+                <img 
+                  src="assets/parentsandboy.jpg" 
+                  alt="Gautam with his parents - Surrounded by Love" 
+                  class="editorial-img img-family"
+                  loading="lazy" 
+                  decoding="async" 
+                />
+                <div class="photo-warm-sheen" aria-hidden="true"></div>
+              </div>
+            </div>
+            <!-- Keepsake Caption Bar -->
+            <div class="photo-caption-bar family-caption-bar">
+              <span class="caption-star">✦</span>
+              <span class="photo-caption-text">SURROUNDED BY LOVE</span>
+              <span class="caption-star">✦</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="letter-card" id="letterCard">
+          <!-- Subtle diagonal paper light sheen effect -->
+          <div class="letter-sheen" aria-hidden="true"></div>
+
+          <!-- Subtle handmade paper texture grain overlay -->
+          <div class="letter-texture" aria-hidden="true"></div>
+
+          <!-- Minimal luxury corner ornaments (5–12% opacity) -->
+          <div class="corner-ornament co-tl" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+              <path d="M2 18V2h16" stroke="currentColor" stroke-width="0.9" />
+              <circle cx="2" cy="2" r="1.4" fill="currentColor" />
+              <circle cx="10" cy="10" r="0.8" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="corner-ornament co-tr" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+              <path d="M30 18V2H14" stroke="currentColor" stroke-width="0.9" />
+              <circle cx="30" cy="2" r="1.4" fill="currentColor" />
+              <circle cx="22" cy="10" r="0.8" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="corner-ornament co-bl" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+              <path d="M2 14v16h16" stroke="currentColor" stroke-width="0.9" />
+              <circle cx="2" cy="30" r="1.4" fill="currentColor" />
+              <circle cx="10" cy="22" r="0.8" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="corner-ornament co-br" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+              <path d="M30 14v16H14" stroke="currentColor" stroke-width="0.9" />
+              <circle cx="30" cy="30" r="1.4" fill="currentColor" />
+              <circle cx="22" cy="22" r="0.8" fill="currentColor" />
+            </svg>
+          </div>
+
+          <!-- Card Composition Top Header -->
+          <div class="letter-header" id="letterHeader">
+            <div class="letter-top-star" aria-hidden="true">✦</div>
+            <p class="letter-eyebrow">FROM GAUTAM'S FAMILY</p>
+            <h2 class="letter-heading">A LITTLE NOTE FROM OUR HEARTS</h2>
+            <div class="letter-divider">
+              <span class="divider-hairline"></span>
+              <span class="divider-gem">✦</span>
+              <span class="divider-hairline"></span>
+            </div>
+          </div>
+
+          <!-- Letter Body Paragraphs (Exact Copy) -->
+          <div class="letter-body" id="letterBody">
+            <p class="letter-para p-1">To our dearest family and friends,</p>
+            <p class="letter-para p-2">Two years ago, a little boy named Gautam came into our lives and filled our world
+              with a kind of joy we never knew we were missing.</p>
+            <p class="letter-para p-3">From his very first smile to his tiny footsteps, curious eyes, and countless
+              little adventures, every moment with him has become a memory we hold close to our hearts.</p>
+            <p class="letter-para p-4">As he turns two, we find ourselves celebrating more than just another year. We
+              are celebrating two beautiful years of laughter, love, learning, and all the precious moments that have
+              made our journey so special.</p>
+            <p class="letter-para p-5">And what could make this day more meaningful than sharing it with the people who
+              have been a part of our lives and have showered Gautam with so much love and affection?</p>
+            <p class="letter-para p-6">So, come with your smiles, your blessings, and your warmest wishes, and celebrate
+              our little one's special day with us.</p>
+            <p class="letter-para p-7">We can't wait to make another beautiful memory together.</p>
+          </div>
+
+          <!-- Bottom Signoff & Handwritten Signature -->
+          <div class="letter-signature-block" id="letterSignatureBlock">
+            <p class="letter-signoff">With all our love,</p>
+            <div class="letter-signature-wrap">
+              <span class="letter-signature-name">Gautam's Family</span>
+            </div>
+            <div class="letter-settle-star" id="letterSettleStar" aria-hidden="true">✦</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ivory experience" id="experience" data-section-index="06">
+      <div class="container reveal">
+        <p class="eyebrow dark">THE NIGHT</p>
+        <h2 class="dark-title">WHAT'S WAITING</h2>
+        <div class="grid milestone-grid">
+          <article class="milestone-item" style="--order:1">
+            <span>♫</span>
+            <h3>Tiny Hands</h3>
+            <p>Good vibes & giggles<br>all night.</p>
+          </article>
+          <article class="milestone-item cake-milestone" id="cakeMilestone" style="--order:2">
+            <div class="cake-banner" id="cakeBanner">AND THEN...</div>
+            <div class="cake-art" id="cakeArt">
+              <div class="cake-candles">
+                <span class="cake-candle candle-1"><i class="cake-flame flame-1"></i></span>
+                <span class="cake-candle candle-2"><i class="cake-flame flame-2"></i></span>
+              </div>
+              <div class="cake-top"></div>
+              <div class="cake-body"></div>
+            </div>
+            <h3 id="cakeTitle">Big Smiles</h3>
+            <p id="cakeSub">Gautam is two years old!<br>Because birthdays need cake.</p>
+          </article>
+          <article class="milestone-item" style="--order:3">
+            <span>◌</span>
+            <h3>Little Adventures</h3>
+            <p>Raise a cheer<br>to turning 2.</p>
+          </article>
+          <article class="milestone-item" style="--order:4">
+            <span>▣</span>
+            <h3>Endless Love</h3>
+            <p>Capture every<br>precious moment.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECOND STORY MOMENT — GAUTAM (TWO YEARS OF MAGIC)
+         Editorial Offset Story Layout
+         ========================================================== -->
+    <section class="section photo-story-section offset-story" id="storyMoment">
+      <div class="container offset-story-container">
+        <!-- Small Gold Ornament -->
+        <div class="offset-ornament-wrap" aria-hidden="true">
+          <span class="offset-gold-star">✦</span>
+          <span class="offset-gold-line"></span>
+        </div>
+
+        <!-- Editorial Offset Photo Frame -->
+        <div class="offset-photo-frame-wrap">
+          <div class="premium-photo-frame variant-editorial" data-photo-variant="editorial">
+            <div class="photo-clip-stage">
+              <div class="photo-inner-canvas">
+                <img 
+                  src="assets/birthdayboy2.jpg" 
+                  alt="Gautam - Two Years of Magic" 
+                  class="editorial-img img-moment"
+                  loading="lazy" 
+                  decoding="async" 
+                />
+                <div class="photo-warm-sheen" aria-hidden="true"></div>
+              </div>
+            </div>
+            <!-- Editorial Caption -->
+            <div class="photo-caption-bar offset-caption-bar">
+              <span class="caption-star">✦</span>
+              <span class="photo-caption-text">TWO YEARS OF MAGIC</span>
+              <span class="caption-star">✦</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offset Floating Typography Subtitle -->
+        <div class="offset-story-text reveal">
+          <p class="offset-script-cue">A little moment of magic</p>
+          <div class="offset-sub-divider" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dress">
+      <div class="container reveal">
+        <p class="eyebrow">DRESS TO SHINE</p>
+        <h2>BLACK <span>×</span> GOLD</h2>
+        <p class="script">Elegant. Effortless. You.</p>
+        <div class="orbit">
+          <div>2</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ivory countdown-section" id="countdownSection" data-section-index="07">
+      <div class="container reveal">
+        <p class="eyebrow dark">THE CLOCK IS TICKING</p>
+        <h2 class="dark-title">UNTIL GAUTAM<br><em>TURNS TWO</em></h2>
+        <div class="countdown" id="countdownGrid">
+          <div><strong id="days">00</strong><small>DAYS</small></div>
+          <div><strong id="hours">00</strong><small>HOURS</small></div>
+          <div><strong id="minutes">00</strong><small>MINUTES</small></div>
+          <div><strong id="seconds">00</strong><small>SECONDS</small></div>
+        </div>
+        <div class="countdown-arrived" id="countdownArrived" style="display:none;">TODAY WE CELEBRATE TWO ✦</div>
+      </div>
+    </section>
+
+    <section class="section rsvp">
+      <div class="container narrow reveal">
+        <p class="eyebrow">ONE LITTLE QUESTION</p>
+        <h2>Will you<br><em>be there?</em></h2>
+        <p class="section-copy">I'd love to celebrate this special day with you.</p>
+        <a class="primary-btn" target="_blank" rel="noopener"
+          href="https://wa.me/916300458261?text=Hi%20Gautam!%20I'd%20love%20to%20join%20your%202nd%20birthday%20celebration.%20%F0%9F%8E%82%E2%9C%A8">YES,
+          I'LL BE THERE ↗</a>
+        <p class="micro">Your RSVP opens WhatsApp</p>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <div class="container narrow reveal">
+        <div class="stars">✦　✧　✦</div>
+        <p class="eyebrow">SAVE THE DATE</p>
+        <h2>Come for the party.<br><em>Stay for the memories.</em></h2>
+        <div class="closing-name">Gautam <span>×</span> 2</div>
+        <p class="see-you">See you on the dance floor.</p>
+
+        <!-- Final Cinematic Surprise Section -->
+        <div class="final-surprise-stage" id="finalSurpriseStage">
+          <p class="surprise-eyebrow">ONE LAST LITTLE SURPRISE</p>
+          <div class="gift-box" id="giftBox" role="button" tabindex="0" aria-label="Open Gautam's Birthday Surprise">
+            <div class="gift-ribbon-bow"></div>
+            <div class="gift-lid"></div>
+            <div class="gift-body"></div>
+            <div class="gift-glow"></div>
+          </div>
+          <div class="surprise-reveal-card" id="surpriseRevealCard">
+            <div class="surprise-stars">✦　✧　✦</div>
+            <h3>GAUTAM<br><span>IS TWO</span></h3>
+            <p>Two years of wonder, sweet giggles & infinite love.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>CRAFTED BY</p>
+      <h3>VOWELLE</h3><span>DIGITAL INVITATIONS & EXPERIENCES</span>
+      <div><a href="https://www.instagram.com/vowelle.creations/" target="_blank">Instagram</a><a
+          href="https://wa.me/916300458261" target="_blank">WhatsApp</a></div>
+      <small>© 2026 Vowelle</small>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
